@@ -9,11 +9,10 @@
     <version>1.0-SNAPSHOT</version>
 
     <parent>
-        <groupId>com.atguugu.gmall</groupId>
+        <groupId>com.atguigu.gmall</groupId>
         <artifactId>gmall-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
 
     <dependencies>
         <dependency>
@@ -27,6 +26,14 @@
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.csource</groupId>
+            <artifactId>fastdfs-client-java</artifactId>
+            <version>1.27-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
+
+
 
 </project>

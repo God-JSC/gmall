@@ -9,10 +9,12 @@
     <version>1.0-SNAPSHOT</version>
 
     <parent>
-        <groupId>com.atguugu.gmall</groupId>
+        <groupId>com.atguigu.gmall</groupId>
         <artifactId>gmall-parent</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -23,6 +25,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
 
 
         <dependency>
@@ -44,7 +47,7 @@
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
         </dependency>
-<!-- 加入了dubbo的依赖-->
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
@@ -66,6 +69,8 @@
             <artifactId>spring-boot-starter-dubbo</artifactId>
         </dependency>
 
+
     </dependencies>
+
 
 </project>
