@@ -93,17 +93,24 @@ public class SpuServiceImpl implements SpuService {
         PmsProductSaleAttr pmsProductSaleAttr = new PmsProductSaleAttr();
         pmsProductSaleAttr.setProductId(spuId);
 
-        List<PmsProductSaleAttr> list = pmsProductSaleAttrMapper.select(pmsProductSaleAttr);
+        List<PmsProductSaleAttr> pmsProductSaleAttrs = pmsProductSaleAttrMapper.select(pmsProductSaleAttr);
 
-        for (PmsProductSaleAttr pmsProductSaleAttr1echo : list) {
+        for (PmsProductSaleAttr productSaleAttr : pmsProductSaleAttrs) {
+
             PmsProductSaleAttrValue pmsProductSaleAttrValue = new PmsProductSaleAttrValue();
-            pmsProductSaleAttrValue.setProductId(spuId);
-            pmsProductSaleAttrValue.setId(pmsProductSaleAttr1echo.getSaleAttrId());
-            List<PmsProductSaleAttrValue> select = pmsProductSaleAttrValueMapper.select(pmsProductSaleAttrValue);
+            pmsProductSaleAttrValue.setProductId(spuId);// spuId+baseSaleAttrId 是销售属性值表product_sale_attr_value的联合外键
+            pmsProductSaleAttrValue.setSaleAttrId(productSaleAttr.getSaleAttrId());// spuId+baseSaleAttrId 是销售属性值表product_sale_attr_value的联合外键
+            List<PmsProductSaleAttrValue> pmsProductSaleAttrValues = pmsProductSaleAttrValueMapper.select(pmsProductSaleAttrValue);
 
-            pmsProductSaleAttr1echo.setSpuSaleAttrValueList(select);
-
+            productSaleAttr.setSpuSaleAttrValueList(pmsProductSaleAttrValues);
         }
-        return list;
+        return pmsProductSaleAttrs;
+    }
+
+    @Override
+    public List<PmsProductSaleAttr> spuSaleAttrListCheckBySku(String spuId, String skuId) {
+        List<PmsProductSaleAttr> pmsProductSaleAttrs = pmsProductSaleAttrMapper.selectSpuSaleAttrListCheckBySku(spuId,skuId);
+
+        return pmsProductSaleAttrs;
     }
 }
