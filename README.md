@@ -12,3 +12,5 @@ manager-web 8070
 item-web 8072
 
 manager-service 8071
+
+cart-web 8074
