@@ -8,21 +8,21 @@ import java.util.List;
 public class PmsSearchSkuInfo implements Serializable{
 
     @Id
-    private long id;
+    private String id;
     private String skuName;
     private String skuDesc;
     private String catalog3Id;
     private BigDecimal price;
     private String skuDefaultImg;
-    private double hotScore;
+    private Double hotScore;
     private String productId;
     private List<PmsSkuAttrValue> skuAttrValueList;
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String  id) {
         this.id = id;
     }
 
@@ -66,7 +66,7 @@ public class PmsSearchSkuInfo implements Serializable{
         this.skuDefaultImg = skuDefaultImg;
     }
 
-    public double getHotScore() {
+    public Double getHotScore() {
         return hotScore;
     }
 
@@ -88,5 +88,20 @@ public class PmsSearchSkuInfo implements Serializable{
 
     public void setSkuAttrValueList(List<PmsSkuAttrValue> skuAttrValueList) {
         this.skuAttrValueList = skuAttrValueList;
+    }
+
+    @Override
+    public String toString() {
+        return "PmsSearchSkuInfo{" +
+                "id='" + id + '\'' +
+                ", skuName='" + skuName + '\'' +
+                ", skuDesc='" + skuDesc + '\'' +
+                ", catalog3Id='" + catalog3Id + '\'' +
+                ", price=" + price +
+                ", skuDefaultImg='" + skuDefaultImg + '\'' +
+                ", hotScore=" + hotScore +
+                ", productId='" + productId + '\'' +
+                ", skuAttrValueList=" + skuAttrValueList +
+                '}';
     }
 }

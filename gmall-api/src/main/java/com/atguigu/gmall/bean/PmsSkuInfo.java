@@ -41,7 +41,7 @@ public class PmsSkuInfo implements Serializable {
     List<PmsSkuSaleAttrValue> skuSaleAttrValueList;
 
     public String getSpuId() {
-
+        spuId=this.productId;
         return spuId;
 
     }

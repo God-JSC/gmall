@@ -38,6 +38,8 @@ public class SkuServiceImpl implements SkuService {
 
     @Autowired
     RedisUtil redisUtil;
+
+
     @Override
     public void saveSkuInfo(PmsSkuInfo pmsSkuInfo) {
          //插入sku商品信息
@@ -162,5 +164,29 @@ public class SkuServiceImpl implements SkuService {
         }
 
         return pmsSkuInfos;
+    }
+
+    @Override
+    public List<PmsSkuInfo> getSearchSkuInfo() {
+        List<PmsSkuInfo> skuInfoList = pmsSkuInfoMapper.selectAll();
+
+        for (PmsSkuInfo pmsSkuInfo : skuInfoList) {
+
+            String infoId = pmsSkuInfo.getId();
+
+            PmsSkuImage pmsSkuImage = new PmsSkuImage();
+            pmsSkuImage.setSkuId(infoId);
+            List<PmsSkuImage> pmsSkuImages = pmsSkuImageMapper.select(pmsSkuImage);
+
+            pmsSkuInfo.setSkuImageList(pmsSkuImages);
+
+            PmsSkuAttrValue pmsSkuAttrValue = new PmsSkuAttrValue();
+            pmsSkuAttrValue.setSkuId(infoId);
+            List<PmsSkuAttrValue> skuAttrValues = pmsSkuAttrValueMapper.select(pmsSkuAttrValue);
+
+            pmsSkuInfo.setSkuAttrValueList(skuAttrValues);
+        }
+
+        return skuInfoList;
     }
 }
